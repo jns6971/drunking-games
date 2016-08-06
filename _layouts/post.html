@@ -50,15 +50,7 @@ layout: default
 
       </div>
     </div>
-    <hr class="u-clearHr"/>
-    <hr class="u-clearHr"/>
-    <hr/>
-    <div class="container container--content">
-      <div class="content-body">
-        {% include subscribe.html %}
-        {% include comments.html %}
-      </div>
-    </div>
+
   </section>
   <footer class="postFooter">
     {% if page.previous.url %}
@@ -80,7 +72,7 @@ layout: default
         <div class="section-title u-tableCell u-verticalAlignMiddle">
           <div class="container">
             <h4>Next story:</h4>
-            <a class="prev" href="{{page.previous.url}}">
+            <a class="prev" href="{{page.previous.url}}.html">
               <h2>{{page.previous.title}}</h2>
             </a>
           </div>
