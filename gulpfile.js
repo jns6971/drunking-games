@@ -89,12 +89,18 @@ gulp.task('sass', function () {
  * Automatically resize post feature images and turn them into thumbnails
  */
 gulp.task("thumbnails", function () {
-  gulp.src("assets/images/hero/*.{jpg,png}")
-    .pipe(parallel(
-      imageResize({ width : 350 }),
-      os.cpus().length
-    ))
-    .pipe(gulp.dest("assets/images/thumbnail"));
+  gulp.src("assets/images/hero/*")
+    .pipe(imageResize({ width : 350 }))
+    .pipe(gulp.dest("assets/images/thumbnail"))
+});
+gulp.task('thumbnails2', function () {
+  gulp.src('assets/images/hero/shark.jpg')
+    .pipe(imageResize({
+      width : 250,
+      crop : true,
+      upscale : false
+    }))
+    .pipe(gulp.dest('assets/images/thumbnail'));
 });
 
 /**
@@ -125,7 +131,7 @@ gulp.task('watch', function() {
  * Watch html/md files, run jekyll & reload BrowserSync
  */
 gulp.task('watch2', function () {
-    gulp.watch('_scss/*.scss', ['sass']);
+    gulp.watch('_scss/**.scss', ['sass']);
     gulp.watch([  '*.html',
                   '*.txt',
                   'about/**',

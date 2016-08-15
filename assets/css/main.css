@@ -2880,3 +2880,43 @@ body {
     display: none !important;
   }
 }
+
+.gen-drinking-list .gen-drink-title {
+  color: #222;
+}
+
+.gen-parallelogram {
+  display: inline-block;
+  color: #fff;
+  padding: 0 10px;
+  position: relative;
+  background: red;
+}
+
+.gen-parallelogram:after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-style: solid;
+  top: 0;
+}
+
+.gen-parallelogram:before {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-style: solid;
+  top: 0;
+}
+
+.gen-parallelogram:before {
+  border-color: transparent red red transparent;
+}
+
+.gen-parallelogram:after {
+  border-color: red transparent transparent red;
+}

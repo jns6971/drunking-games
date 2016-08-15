@@ -1,0 +1,57 @@
+//
+// Generic theme
+// 'gen' prefix
+// --------------------------------------------------
+
+// Post
+
+.gen-theme{
+  
+}
+
+.gen-drinking-list {
+
+  .gen-drink-title{
+    color: $black;
+  }
+}
+
+@mixin parallelogram-color($color) {
+  background: $color;
+  &:before { border-color: transparent $color $color transparent; }
+  &:after { border-color: $color transparent transparent $color; }
+}
+
+@mixin triangle() {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-style: solid;
+  // border-width: $height/2 $width/2;
+  top: 0;
+}
+
+.gen-parallelogram{
+  display: inline-block;
+  color: #fff;
+  padding: 0 10px;
+  position: relative;
+  // height: $height;
+  // line-height: $height;
+  // margin-left: $width;
+
+  &:after {
+    @include triangle();
+    // right: -$width;
+  }
+
+  &:before {
+    @include triangle();
+    // left: -$width;
+  }
+
+  @include parallelogram-color(red);
+}
+
