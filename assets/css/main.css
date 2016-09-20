@@ -2881,6 +2881,10 @@ body {
   }
 }
 
+.gen-drunk-options {
+  text-align: center;
+}
+
 .gen-drinking-list .gen-drink-title {
   color: #222;
 }

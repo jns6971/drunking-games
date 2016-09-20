@@ -1,6 +1,7 @@
 var gulp = require('gulp'),
     browserSync = require('browser-sync').create(),
     sass = require('gulp-sass'),
+    sourcemaps = require('gulp-sourcemaps'),
     autoprefixer = require('gulp-autoprefixer'),
     minifycss = require('gulp-minify-css'),
     rename = require('gulp-rename'),
@@ -44,7 +45,6 @@ gulp.task('browser-sync', ['styles', 'jekyll-build'], function() {
 });
 
 // To support opacity in IE 8
-
 var opacity = function(css) {
   css.walkDecls(function(decl, i) {
     if (decl.prop === 'opacity') {
@@ -61,29 +61,36 @@ var opacity = function(css) {
  */
 gulp.task('styles', function() {
   return gulp.src('_scss/main.scss')
+    .pipe(sourcemaps.init())
+    .pipe(sass().on('error', sass.logError))
     .pipe(sass({ outputStyle: 'expanded' }))
     .pipe(autoprefixer({browsers: ['last 2 versions', 'Firefox ESR', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1']}))
     .pipe(postcss([opacity]))
-    .pipe(gulp.dest('assets/css'))
-    .pipe(rename({suffix: '.min'}))
-    .pipe(minifycss())
     .pipe(gulp.dest('assets/css'));
+});
+
+//minify css
+gulp.task('css-minify', function () {
+    gulp.src('assets/css')
+        .pipe(rename({suffix: '.min'}))
+        .pipe(minifyCSS())
+        .pipe(gulp.dest('assets/css'));
 });
 
 /**
  * Compile files from _scss into both _site/css (for live injecting) and site (for future jekyll builds)
  */
-gulp.task('sass', function () {
-    return gulp.src('_scss/main.scss')
-        .pipe(sass({
-            includePaths: ['scss'],
-            onError: browserSync.notify
-        }))
-        .pipe(prefix(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true }))
-        .pipe(gulp.dest('_site/css'))
-        .pipe(browserSync.reload({stream:true}))
-        .pipe(gulp.dest('css'));
-});
+// gulp.task('sass', function () {
+//     return gulp.src('_scss/main.scss')
+//         .pipe(sass({
+//             includePaths: ['scss'],
+//             onError: browserSync.notify
+//         }))
+//         .pipe(prefix(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true }))
+//         .pipe(gulp.dest('_site/css'))
+//         .pipe(browserSync.reload({stream:true}))
+//         .pipe(gulp.dest('css'));
+// });
 
 /**
  * Automatically resize post feature images and turn them into thumbnails
@@ -103,35 +110,37 @@ gulp.task('thumbnails2', function () {
     .pipe(gulp.dest('assets/images/thumbnail'));
 });
 
+// gulp.task
+
 /**
  * Watch scss files for changes & recompile
  * Watch html/md files, run jekyll
  * Watch _site generation, reload BrowserSync
  */
-gulp.task('watch', function() {
-  gulp.watch('_scss/**/*.scss', ['styles']);
-  gulp.watch('assets/images/hero/*.{jpg,png}', ['thumbnails']);
-  gulp.watch(['*.html',
-          '*.txt',
-          'about/**',
-          '_posts/*.markdown',
-          'assets/javascripts/**/**.js',
-          'assets/images/**',
-          'assets/fonts/**',
-          '_layouts/**',
-          '_includes/**',
-          'assets/css/**'
-        ],
-        ['jekyll-build']);
-  gulp.watch("_site/index.html").on('change', browserSync.reload);
-});
+// gulp.task('watch', function() {
+//   gulp.watch('_scss/**/*.scss', ['styles']);
+//   gulp.watch('assets/images/hero/*.{jpg,png}', ['thumbnails']);
+//   gulp.watch(['*.html',
+//           '*.txt',
+//           'about/**',
+//           '_posts/*.markdown',
+//           'assets/javascripts/**/**.js',
+//           'assets/images/**',
+//           'assets/fonts/**',
+//           '_layouts/**',
+//           '_includes/**',
+//           'assets/css/**'
+//         ],
+//         ['jekyll-build']);
+//   gulp.watch("_site/index.html").on('change', browserSync.reload);
+// });
 
 /**
  * Watch scss files for changes & recompile
  * Watch html/md files, run jekyll & reload BrowserSync
  */
-gulp.task('watch2', function () {
-    gulp.watch('_scss/**.scss', ['sass']);
+gulp.task('watch', function () {
+    gulp.watch('_scss/**/*.scss', ['styles']);
     gulp.watch([  '*.html',
                   '*.txt',
                   'about/**',
@@ -166,4 +175,4 @@ gulp.task('jekyll', function() {
  * compile the jekyll site, launch BrowserSync & watch files.
  */
 // gulp.task('default', ['thumbnails', 'browser-sync', 'watch2']);
-gulp.task('default', ['browser-sync', 'watch2']);
+gulp.task('default', ['browser-sync', 'watch']);
