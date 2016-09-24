@@ -2881,25 +2881,25 @@ body {
   }
 }
 
-.gen-drunk-options {
+.gen-options {
   text-align: center;
 }
 
-.gen-drinking-list .gen-drink-title, .gen-drinking-list .gen-drink-subtitle {
+.gen-drinking-list .gen-drink-title, .gen-drinking-list .gen-drink-list {
   color: #1A1A1A;
 }
 
-.gen-drink-title {
+.gen-title {
   text-align: center;
 }
 
-.gen-drink-title span {
+.gen-title span {
   background: #fff;
   padding: 0 10px;
   position: relative;
 }
 
-.gen-drink-title span:before, .gen-drink-title span:after {
+.gen-title span:before, .gen-title span:after {
   content: "";
   display: block;
   border-top: 1px solid #1A1A1A;
@@ -2908,17 +2908,17 @@ body {
   width: 80%;
 }
 
-.gen-drink-title span:before {
+.gen-title span:before {
   right: 100%;
 }
 
-.gen-drink-title span:after {
+.gen-title span:after {
   left: 100%;
 }
 
 .gen-parallelogram {
   font-size: 16px;
-  line-height: 16px;
+  line-height: 20px;
   float: none;
 }
 
@@ -2927,20 +2927,22 @@ body {
   left: -22px;
 }
 
-.gen-parallelogram .gen-drink-subtitle {
+.gen-parallelogram .gen-list-subtitle {
   color: #fff;
   background: #1A1A1A;
-  font-family: Arial, sans-serif;
+  text-transform: uppercase;
   text-decoration: none;
   padding: 6px 15px;
   display: inline-block;
+  min-width: 200px;
+  text-align: center;
 }
 
 .gen-parallelogram:before, .gen-parallelogram:after {
   content: "";
-  width: 16px;
-  height: 28px;
-  line-height: 16px;
+  width: 20px;
+  height: 32px;
+  line-height: 20px;
   vertical-align: top;
   display: inline-block;
   position: relative;

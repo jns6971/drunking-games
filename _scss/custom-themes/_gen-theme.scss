@@ -9,19 +9,19 @@
   
 }
 
-.gen-drunk-options{
+.gen-options{
   text-align: center;
 }
 
 .gen-drinking-list {
 
-   .gen-drink-title, .gen-drink-subtitle{
+   .gen-drink-title, .gen-drink-list{
     color: $black;
   }
 }
 
 
-.gen-drink-title{
+.gen-title{
   text-align: center;
 
   span{
@@ -50,26 +50,28 @@
 
 .gen-parallelogram {
   font-size:16px;
-  line-height:16px;
+  line-height:20px;
   float:none;
 }
 .gen-parallelogram:last-child {
     position:relative;
     left:-22px;
 }
-.gen-parallelogram .gen-drink-subtitle {
+.gen-parallelogram .gen-list-subtitle {
   color:$white;
   background: $text-color;
-  font-family:Arial, sans-serif;
+  text-transform: uppercase;
   text-decoration:none;
   padding:6px 15px;
   display:inline-block;
+  min-width: 200px;
+  text-align: center;
 }
 .gen-parallelogram:before, .gen-parallelogram:after {
   content:"";
-  width:16px;
-  height:28px;
-  line-height:16px;
+  width:20px;
+  height:32px;
+  line-height:20px;
   vertical-align:top;
   display:inline-block;
   position:relative;
