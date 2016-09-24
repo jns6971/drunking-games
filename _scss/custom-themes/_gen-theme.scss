@@ -15,47 +15,73 @@
 
 .gen-drinking-list {
 
-  .gen-drink-title{
+   .gen-drink-title, .gen-drink-subtitle{
     color: $black;
   }
 }
 
-@mixin parallelogram-color($color) {
-  background: $color;
-  &:before { border-color: transparent $color $color transparent; }
-  &:after { border-color: $color transparent transparent $color; }
-}
 
-@mixin triangle() {
-  content: '';
-  display: block;
-  width: 0;
-  height: 0;
-  position: absolute;
-  border-style: solid;
-  // border-width: $height/2 $width/2;
-  top: 0;
-}
+.gen-drink-title{
+  text-align: center;
 
-.gen-parallelogram{
-  display: inline-block;
-  color: #fff;
-  padding: 0 10px;
-  position: relative;
-  // height: $height;
-  // line-height: $height;
-  // margin-left: $width;
+  span{
+    background: $white;
+    padding: 0 10px;
+    position: relative;
 
-  &:after {
-    @include triangle();
-    // right: -$width;
+
+    &:before, &:after {
+      content: "";
+      display: block;
+      border-top: 1px solid $black;
+      position: absolute;
+      top: .73em;
+      width: 80%;
+    }
+
+    &:before{
+      right: 100%;
+    }
+    &:after{
+      left: 100%;
+    }
   }
-
-  &:before {
-    @include triangle();
-    // left: -$width;
-  }
-
-  @include parallelogram-color(red);
 }
 
+.gen-parallelogram {
+  font-size:16px;
+  line-height:16px;
+  float:none;
+}
+.gen-parallelogram:last-child {
+    position:relative;
+    left:-22px;
+}
+.gen-parallelogram .gen-drink-subtitle {
+  color:$white;
+  background: $text-color;
+  font-family:Arial, sans-serif;
+  text-decoration:none;
+  padding:6px 15px;
+  display:inline-block;
+}
+.gen-parallelogram:before, .gen-parallelogram:after {
+  content:"";
+  width:16px;
+  height:28px;
+  line-height:16px;
+  vertical-align:top;
+  display:inline-block;
+  position:relative;
+  background: $text-color;
+}
+.gen-parallelogram:before  {
+    left:4px;
+  -webkit-clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+  clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+}
+.gen-parallelogram:after {
+  left:-4px;
+  -webkit-clip-path: polygon(0 0, 0% 100%, 100% 0);
+  clip-path: polygon(0 0, 0% 100%, 100% 0);
+}
