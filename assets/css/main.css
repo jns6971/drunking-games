@@ -2881,8 +2881,20 @@ body {
   }
 }
 
+h1.reduce-margin-top, h2.reduce-margin-top, h3.reduce-margin-top, h4.reduce-margin-top, h5.reduce-margin-top, h6.reduce-margin-top, p.reduce-margin-top, ul.reduce-margin-top {
+  margin-top: 0;
+}
+
+h1.reduce-padding-bottom, h2.reduce-padding-bottom, h3.reduce-padding-bottom, h4.reduce-padding-bottom, h5.reduce-padding-bottom, h6.reduce-padding-bottom, p.reduce-padding-bottom, ul.reduce-padding-bottom {
+  margin-bottom: 0;
+}
+
 .gen-options {
   text-align: center;
+}
+
+.gen-extra {
+  font-style: italic;
 }
 
 .gen-drinking-list .gen-drink-title, .gen-drinking-list .gen-drink-list {
@@ -2891,6 +2903,7 @@ body {
 
 .gen-title {
   text-align: center;
+  margin-bottom: 60px;
 }
 
 .gen-title span {

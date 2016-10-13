@@ -13,6 +13,10 @@
   text-align: center;
 }
 
+.gen-extra{
+  font-style: italic;
+}
+
 .gen-drinking-list {
 
    .gen-drink-title, .gen-drink-list{
@@ -23,6 +27,7 @@
 
 .gen-title{
   text-align: center;
+  margin-bottom: 60px;
 
   span{
     background: $white;
