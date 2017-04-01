@@ -1,0 +1,30 @@
+.theme-simpsons .postWrapper > section h2, .theme-simpsons .postWrapper > section h5 {
+  font-family: 'Rock Salt', san-serif;
+}
+
+.theme-simpsons .postWrapper .section--first h2 {
+  color: yellow;
+}
+
+.theme-simpsons .section--last {
+  background-image: url("/assets/images/custom-themes/simpsons-clouds-bg.jpg");
+  background-repeat: no-repeat;
+  background-color: #92D4F7;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.theme-simpsons .container--content {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.theme-simpsons h4 {
+  text-align: center;
+}
+
+.theme-simpsons hr {
+  border: 0;
+  height: 1px;
+  background: #000;
+}
